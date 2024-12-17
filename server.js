@@ -12,8 +12,6 @@ const allNames = ['Pi Uan', 'Lynn', 'Mr. Supra', 'Plar', 'K. Tse', 'Nom Nuang', 
 let hatNames = [...allNames]; // Copy of allNames for drawing
 let pairs = [];
 
-fs.writeFileSync('pairs.txt', '');
-
 // Serve the index.html file
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -25,11 +23,9 @@ app.get('/names', (req, res) => {
 });
 
 // Endpoint to draw a name
-// Endpoint to draw a name
 app.post('/draw', (req, res) => {
     const { selectedName } = req.body;
 
-    // Check if the selected name has already been paired
     if (pairs.some(pair => pair.selectedName === selectedName)) {
         return res.status(400).json({ error: 'This person has already been paired.' });
     }
@@ -37,14 +33,16 @@ app.post('/draw', (req, res) => {
     const remainingNames = hatNames.filter(name => name !== selectedName);
     const drawnName = remainingNames[Math.floor(Math.random() * remainingNames.length)];
 
-    // Remove only the drawn name from the hat
     hatNames = hatNames.filter(name => name !== drawnName);
 
-    // Store the pair
     pairs.push({ selectedName, drawnName });
-    fs.appendFileSync('pairs.txt', `${selectedName} -> ${drawnName}\n`);
 
     res.json({ drawnName });
+});
+
+// Endpoint to view current pairs
+app.get('/pairs', (req, res) => {
+    res.json(pairs);
 });
 
 const port = process.env.PORT || 3000;
