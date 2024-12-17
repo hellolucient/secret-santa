@@ -47,7 +47,8 @@ app.post('/draw', (req, res) => {
     res.json({ drawnName });
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-    console.log('Open your browser and go to: http://localhost:3000');
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+    console.log('Open your browser and go to: http://localhost:' + port);
 });
