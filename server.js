@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const allNames = ['Pi Uan', 'Lynn', 'Mr. Supra', 'Plar', 'K. Tse', 'Nom Nuang', 'Ao', 'Pluem', 'Da Tuat', 'Pi Dang', 'Ice', ];
 let hatNames = [...allNames]; // Copy of allNames for drawing
