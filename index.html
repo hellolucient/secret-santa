@@ -6,7 +6,7 @@
     <title>Secret Santa</title>
     <style>
         body {
-            background: url('background.png') no-repeat center center fixed;
+            background: url('/background.png') no-repeat center center fixed;
             background-size: cover;
             margin: 0;
             padding: 0;
@@ -66,7 +66,7 @@
             transform: translate(-50%, -50%);
             width: 40vmin;
             height: 50vmin;
-            background: url('stocking.png') no-repeat center center;
+            background: url('/stocking.png') no-repeat center center;
             background-size: contain;
             animation: shake 0.5s infinite;
             cursor: pointer;
@@ -100,7 +100,7 @@
             transform: translate(-50%, -50%);
             width: 600px;
             height: 800px;
-            background: url('frame.png') no-repeat center center;
+            background: url('/frame.png') no-repeat center center;
             background-size: contain;
             display: flex;
             align-items: center;
@@ -125,7 +125,7 @@
             transform: translate(50%, 50%);
             width: 100px;
             height: 100px;
-            background: url('green-tick.png') no-repeat center center;
+            background: url('/green-tick.png') no-repeat center center;
             background-size: contain;
             cursor: pointer;
             z-index: 12;
@@ -138,7 +138,7 @@
             transform: translate(-50%, -50%) rotate(-20deg);
             width: 40vmin;
             height: 40vmin;
-            background: rgba(0, 100, 0, 0.5) url('Happy-Shopping.png') no-repeat center center;
+            background: rgba(0, 100, 0, 0.5) url('/Happy-Shopping.png') no-repeat center center;
             background-size: contain;
             z-index: 12;
             border-radius: 10px;
@@ -237,7 +237,7 @@
                 elf.className = 'elf';
                 elf.style.top = positions[index].top;
                 elf.style.left = positions[index].left;
-                elf.innerHTML = `<div class="name-sign">${name}</div><img src="${name}.png" alt="Elf">`;
+                elf.innerHTML = `<div class="name-sign">${name}</div><img src="/${name}.png" alt="Elf">`;
                 elf.onclick = () => {
                     // Remove highlight from any previously selected elf
                     const previouslySelected = document.querySelector('.elf.selected');
@@ -266,7 +266,7 @@
                         } else {
                             // Display the stop-sign.png image for incorrect code
                             const stopSign = document.createElement('img');
-                            stopSign.src = 'stop-sign.png';
+                            stopSign.src = '/stop-sign.png';
                             stopSign.style.position = 'absolute';
                             stopSign.style.top = '50%';
                             stopSign.style.left = '50%';
